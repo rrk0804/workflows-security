@@ -1,0 +1,70 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Argus",
+          "version": "0.1.1"
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "[Low Severity] Context github.event.pull_request.commits flows to sink [event.pull_request.commits](0)"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "First commit message adheres to guidelines | Job : lint-commit-message | Step : nb-of-commits (0th step)"
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "id": 0,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "First commit message adheres to guidelines | Job : lint-commit-message | Step : nb-of-commits (0th step)"
+                }
+              }
+            }
+          ],
+          "ruleId": "ContextToSink",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "[Low Severity] Context github.event.pull_request.commits flows to sink [nb-of-commits.outputs.minusOne](0)"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "First commit message adheres to guidelines | Job : lint-commit-message | Step : nb-of-commits (0th step)"
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "id": 0,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "First commit message adheres to guidelines | Job : lint-commit-message | Step : task_4 (4th step)"
+                }
+              }
+            }
+          ],
+          "ruleId": "ContextToSink",
+          "ruleIndex": 1
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}
