@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Argus",
+          "version": "0.1.1"
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "[High Severity] Argument message flows to output [firstword](0).\n                        \n                        An argument output vulnerability was detected in your workflow. This happens when you use an \n                        argument variable in a workflow's output without checking whether the context variable contains\n                        tainted data. This is dangerous as a user could inject bash commands like \"$(ls -l)\" to get sensitive \n                        information about your software supply chain.\n                        \n                        Example of a workflow that contains an argument output vulnerability:\n                        ###   on:\n                        ###     workflow_call:\n                        ###         inputs:\n                        ###         message:\n                        ###             required: true\n                        ###             type: string\n                        ###         outputs:\n                        ###         firstword:\n                        ###             description: \"The first output string\"\n                        ###             value: ${ inputs.message }\n\n                        Consider setting the value of the argument variable to an intermediate environment variable to \n                        prevent automatic variable evaluation.\n                        name: Reusable workflow example\n\n                        ### on:\n                        ## # workflow_call:\n                        ###     inputs:\n                        ###     message:\n                        ###         required: true\n                        ###         type: string\n                        ###     outputs:\n                        ###     firstword:\n                        ###         description: \"The first output string\"\n                        ###         value: ${ jobs.example_job.outputs.output1 }\n\n                        ### jobs:\n                        ### example_job:\n                        ###     runs-on: ubuntu-latest\n                        ###     outputs:\n                        ###     output1: ${ steps.step1.outputs.firstword }\n                        ###     steps:\n                        ###     - id: step1\n                        ###         env:\n                        ###         MESSAGE: ${ inputs.message }\n                        ###         run: echo %20 %20 \"firstword=$MESSAGE\" >> $GITHUB_OUTPUT\n\n                        "
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Reusable workflow example | workflow_inputs"
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "id": 0,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Reusable workflow example | workflow_outputs"
+                }
+              }
+            }
+          ],
+          "ruleId": "ArgToOutput",
+          "ruleIndex": 2
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}

@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Argus",
+          "version": "0.1.1"
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "[High Severity] Context github.event.pull_request.title flows to sink [title](0)\n                        Consider settting the context value to an intermediate environment variable.\n                        For example: \n                          -name: Check PR title\n                           env:\n                             TITLE: ${github.event.pull_request.title }"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Check \"WIP\" in PR Title | Job : wip | Step : task_0 (0th step)"
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "id": 0,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Check \"WIP\" in PR Title | Job : wip | Step : task_0 (0th step)"
+                }
+              }
+            }
+          ],
+          "ruleId": "ContextToSink",
+          "ruleIndex": 1
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json"
+}
